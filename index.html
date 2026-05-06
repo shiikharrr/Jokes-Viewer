@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jokes Viewer</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-purple-900 to-gray-900 text-white flex items-center justify-center min-h-screen">
+
+  <div class="bg-gray-800 p-8 rounded-xl shadow-xl max-w-md w-full text-center">
+
+    <h1 class="text-2xl font-bold mb-4">😂 Random Joke</h1>
+
+    <p id="joke" class="text-gray-200 mb-6">Loading joke...</p>
+
+    <button 
+      onclick="getJoke()" 
+      class="bg-yellow-400 text-black px-5 py-2 rounded-lg font-semibold hover:bg-yellow-300 transition"
+    >
+      Next Joke
+    </button>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
