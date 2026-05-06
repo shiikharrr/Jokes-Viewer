@@ -17,4 +17,7 @@ This project is a jokes viewer application built using HTML, Tailwind CSS, and J
 https://api.freeapi.app/api/v1/public/randomjokes
 
 ## Live Demo
-(Add your GitHub Pages link here)
+https://shiikharrr.github.io/Jokes-Viewer/
+
+## Author
+Shikhar Gupta
