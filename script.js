@@ -1,21 +1,39 @@
-const jokeText = document.getElementById("joke");
+const container = document.getElementById("joke");
 
 async function getJoke() {
   try {
-    jokeText.innerText = "Loading...";
+    container.innerHTML = "Loading...";
 
-    const res = await fetch("https://api.freeapi.app/api/v1/public/randomjokes");
-    const data = await res.json();
+    let jokesSet = new Set();
+    let attempts = 0;
 
-    const joke = data.data;
+    while (jokesSet.size < 5 && attempts < 10) {
+      const res = await fetch("https://api.freeapi.app/api/v1/public/randomjokes");
+      const result = await res.json();
 
-    jokeText.innerText = joke.content;
+      const jokeData = result.data.data;
+      const joke = Array.isArray(jokeData) ? jokeData[0] : jokeData;
+
+      jokesSet.add(joke.content);
+      attempts++;
+    }
+
+    if (jokesSet.size === 0) {
+      container.innerHTML = "Failed to load jokes 😢";
+      return;
+    }
+
+    let jokesHTML = "";
+    jokesSet.forEach(j => {
+      jokesHTML += `<p class="mb-3">😂 ${j}</p>`;
+    });
+
+    container.innerHTML = jokesHTML;
 
   } catch (error) {
-    jokeText.innerText = "Failed to load joke 😢";
+    container.innerHTML = "Failed to load jokes 😢";
     console.error(error);
   }
 }
 
-// Load first joke automatically
 getJoke();
